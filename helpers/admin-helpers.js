@@ -23,7 +23,7 @@ module.exports={
                     {
                         
                         resolve({status:false})
-                  
+                      console.log("1");
                         
                       }
                     })
@@ -32,6 +32,7 @@ module.exports={
                   {
     
                 resolve({status:false})
+                console.log("2");
               }
           })
       },

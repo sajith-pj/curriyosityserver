@@ -3,7 +3,7 @@ import { Link, Redirect, useHistory, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
 import './Product.css'
-axios.defaults.withCredentials = true
+// axios.defaults.withCredentials = true
 export default function Products() {
 
   const [errMsg, setErrMsg] = useState(false)
@@ -11,19 +11,21 @@ export default function Products() {
   const [products, setProducts] = useState([])
   const history = useHistory()
   const location = useLocation()
+
   const ValidityCheck = () => {
     axios.get('/admin/products', { withCredentials: true }).then(response => {
       console.log(response);
       if (response.data.loggedIn === false) {
         history.push('/admin/')
-      } else {
+      } 
         setProducts(response.data)
-      }
+      
+      
     })
   }
 
   useEffect(() => {
-    ValidityCheck()
+    ValidityCheck()                                
     if (location.success === true) {
       setErrMsg(true)
       setTimeout(() => {
@@ -40,7 +42,7 @@ export default function Products() {
   }
 
   const deleteProduct = (productId) => {
-    axios.get('http://localhost:3001/admin/delete-product', { params: { proId: productId } }, { withCredentials: true }).then(response => {
+    axios.get('/admin/delete-product', { params: { proId: productId } }, { withCredentials: true }).then(response => {
       if (response.data.deleted === true) {
         ValidityCheck()
         setDeleted(true)
@@ -83,7 +85,7 @@ export default function Products() {
       </div>
       <div className="row mt-3">
         <div className="col-12">
-          <table class="table">
+          <table className="table">
             <thead>
               <tr>
                 <th scope="col">Sl.No</th>

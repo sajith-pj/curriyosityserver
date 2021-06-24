@@ -26,14 +26,17 @@ app.use(session({secret:"curiyosity",cookie:{maxAge:600000}}));
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
 
-if( process.env.NODE_ENV === 'production')
-{
-  app.use(express.static('Curriosity/build'))
-  app.use(express.static('curryosity-admin/build'))
-  app.get('*',(req, res)=>{
-    res.sendFile(path.join(__dirname, 'Curriosity','build' ||__dirname, 'curryosity-admin','build'  ))
-  })
-}
+// if( process.env.NODE_ENV === 'production')
+// {
+//   app.use(express.static('Curriosity/build'))
+//   app.use(express.static('curryosity-admin/build'))
+//   app.get('/',(req, res)=>{
+//     res.sendFile(path.join(__dirname, 'Curriosity','build' ))
+//   })
+//   app.get('/admin',(req, res)=>{
+//     res.sendFile(path.join( __dirname, 'curryosity-admin','build' ))
+//   })
+// }
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -47,7 +50,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error'+ err);
 });
 
 module.exports = app;

@@ -40,6 +40,7 @@ router.post('/login',(req,res)=>{
 
 router.get('/products',verifyLogin,(req,res)=>{
     productHealpers.getAllProducts().then( (response)=>{
+  
       res.json(response)      
     })
 
@@ -82,7 +83,6 @@ router.get('/delete-product',verifyLogin,(req,res)=>{
   productHealpers.deleteProduct(req.query.proId ).then( (response) =>{
      if(response){
        res.send({deleted:true})
-       res.redirect('/products')
      } 
   })
 })
@@ -120,6 +120,7 @@ router.post('/add-product',verifyLogin,upload.single("file"),(req,res)=>{
 
 router.get('/orders',verifyLogin,(req,res)=>{
       adminHelpers.getOrders().then( response =>{
+        
       res.send(response)
       })
 })

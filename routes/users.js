@@ -58,7 +58,6 @@ router.get('/logout',(req,res)=>{
 router.get('/products', (req, res)=>{
   if(req.query.category){
     let category = req.query.category
-
     if(category){
   productHealpers.getProductByCategory(category).then(( response)=>{
     res.send({products:response , user:req.session.user})
