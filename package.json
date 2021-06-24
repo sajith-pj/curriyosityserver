@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "heroku-postbuild": "cd Curriosity && npm install && npm run build && cd .. && cd curriyosity-admin && npm install && npm run build"
+    "heroku-postbuild": "cd Curriosity && npm install && npm run build && cd .. && cd curryosity-admin && npm install && npm run build"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
