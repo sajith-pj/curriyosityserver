@@ -14,7 +14,7 @@ export default function Products() {
 
   const ValidityCheck = () => {
     axios.get('/admin/products', { withCredentials: true }).then(response => {
-      if (response.data["loggedIn"] === false) {
+      if (response.data.loggedIn === false) {
         history.push('/admin/')
       } 
         setProducts(response.data)
