@@ -35,7 +35,7 @@ if( process.env.NODE_ENV === 'production')
   // })
 
   app.get('/admin',(req, res)=>{
-    res.sendFile(path.join( __dirname, 'curryosity-admin','build' ,'index.html'))
+    res.render(path.join( __dirname, 'curryosity-admin','build' ,'index.html'))
   })
 }
 // catch 404 and forward to error handler
