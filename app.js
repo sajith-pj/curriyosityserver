@@ -24,6 +24,9 @@ db.connect((err)=>{
 });
 app.use(session({secret:"curiyosity",cookie:{maxAge:600000}}));
 app.use(cors())
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X- Request-With');
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
 
