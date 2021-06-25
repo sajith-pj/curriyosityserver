@@ -13,7 +13,7 @@ const verifyLogin = (req,res,next)=>{
 }
 
 router.get('/user' ,function(req, res) { 
- if(req.session.loggedIn){
+ if(req.session.user){
    res.json(req.session.user)
  }else{
    req.session.loggedIn = false
