@@ -8,6 +8,7 @@ var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
 
 var app = express();
+app.use(cors())
 var db = require('./config/connection')
 var session = require('express-session')
 
@@ -16,11 +17,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('trust proxy',1)
-app.use(cors())
-header.append('Access-Control-Allow-Origin', '*');
-header.append('Access-Control-Allow-Headers', 'Content-Type,multipart/form-data,Authorization');
-header.append('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
 db.connect((err)=>{
   if(err)
   console.log("error"+err);
