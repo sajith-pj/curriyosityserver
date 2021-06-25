@@ -11,7 +11,6 @@ var app = express();
 var db = require('./config/connection')
 var session = require('express-session')
 
-app.use(cors({origin:'*',credentials:true}))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -23,8 +22,10 @@ db.connect((err)=>{
   else
   console.log("database connected");
 });
+app.use('trust proxy',1)
 
-app.set("trust proxy", 1);
+app.use(cors({origin:'https://curiyosity.netlify.app',credentials:true}))
+
 app.use(session({secret:"curiyosity",cookie:{maxAge:600000}}));
 
 app.use('/admin', adminRouter);
