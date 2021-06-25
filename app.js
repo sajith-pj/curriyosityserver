@@ -23,6 +23,8 @@ db.connect((err)=>{
   else
   console.log("database connected");
 });
+
+app.set("trust proxy", 1);
 app.use(session({secret:"curiyosity",cookie:{maxAge:600000}}));
 
 app.use('/admin', adminRouter);
