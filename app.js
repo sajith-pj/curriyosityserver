@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('trust proxy',1)
-app.use(cors({origin:'https://curiyosity.netlify.app',credentials:true}))
+app.use(cors())
 res.header('Access-Control-Allow-Origin', '*');
 res.header('Access-Control-Allow-Headers', 'Content-Type,multipart/form-data,Authorization');
 res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
