@@ -16,7 +16,7 @@ router.get('/user' ,function(req, res) {
  if(req.session.loggedIn){
    res.json(req.session.user)
  }else{
-   req.session.loggedIn == false
+   req.session.loggedIn = false
    res.json(req.session.loggedIn)
  }
 
