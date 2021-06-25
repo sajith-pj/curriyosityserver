@@ -8,7 +8,6 @@ var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
 
 var app = express();
-app.use(cors({origin:'https://curiyosity.netlify.app',credentials:true}))
 var db = require('./config/connection')
 var session = require('express-session')
 
@@ -24,6 +23,7 @@ db.connect((err)=>{
   console.log("database connected");
 });
 
+app.use(cors({credentials:true , origin:'https://curiyosity.netlify.app'}))
 app.use(session({secret:"curiyosity",cookie:{maxAge:600000}}));
 
 app.use('/admin', adminRouter);
