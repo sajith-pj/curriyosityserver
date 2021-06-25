@@ -12,7 +12,7 @@ const verifyLogin = (req,res,next)=>{
   }
 }
 
-router.get('/'  ,function(req, res) { 
+router.get('/user'  ,function(req, res) { 
   if(req.session.user){
    res.send(req.session.user)
   }else{
