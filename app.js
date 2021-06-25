@@ -11,7 +11,6 @@ var app = express();
 var db = require('./config/connection')
 var session = require('express-session')
 
-app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -24,6 +23,7 @@ db.connect((err)=>{
   console.log("database connected");
 });
 app.use(session({secret:"curiyosity",cookie:{maxAge:600000}}));
+app.use(cors())
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
 
