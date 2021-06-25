@@ -18,9 +18,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('trust proxy',1)
 app.use(cors())
-res.header('Access-Control-Allow-Origin', '*');
-res.header('Access-Control-Allow-Headers', 'Content-Type,multipart/form-data,Authorization');
-res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+header.append('Access-Control-Allow-Origin', '*');
+header.append('Access-Control-Allow-Headers', 'Content-Type,multipart/form-data,Authorization');
+header.append('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
 db.connect((err)=>{
   if(err)
   console.log("error"+err);
