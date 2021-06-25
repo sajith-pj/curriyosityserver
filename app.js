@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors( {origin: '*'}))
 db.connect((err)=>{
   if(err)
   console.log("error"+err);
@@ -23,10 +24,7 @@ db.connect((err)=>{
   console.log("database connected");
 });
 app.use(session({secret:"curiyosity",cookie:{maxAge:600000}}));
-app.use(cors())
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
-header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X- Request-With');
+
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
 
