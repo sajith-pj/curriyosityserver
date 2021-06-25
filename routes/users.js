@@ -12,13 +12,11 @@ const verifyLogin = (req,res,next)=>{
   }
 }
 
-router.get('/', function(req, res) {
-  let user = req.session.user;
-   if(req.session.loggedIn){
-   res.json(user)
-   }else{
-     res.send(false)
-   }
+router.get('/user', verifyLogin ,function(req, res) { 
+ if(req.session.user){
+   res.send(req.session.user)
+ }
+
 });
 
 router.post('/signup', function(req, res, ) {

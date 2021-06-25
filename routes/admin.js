@@ -40,8 +40,7 @@ router.post('/login',(req,res)=>{
 
 router.get('/products',verifyLogin,(req,res)=>{
     productHealpers.getAllProducts().then( (response)=>{
-  
-      res.send(response)      
+      res.json(response)      
     })
 
  })
