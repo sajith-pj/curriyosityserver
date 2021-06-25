@@ -3,7 +3,7 @@ import { Link, Redirect, useHistory, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
 import './Product.css'
-// axios.defaults.withCredentials = true
+ axios.defaults.withCredentials = true
 export default function Products() {
 
   const [errMsg, setErrMsg] = useState(false)
@@ -14,7 +14,6 @@ export default function Products() {
 
   const ValidityCheck = () => {
     axios.get('/admin/products', { withCredentials: true }).then(response => {
-      console.log(response);
       if (response.data.loggedIn == false) {
         history.push('/admin/')
       } 
