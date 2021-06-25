@@ -7,3 +7,12 @@
     background: #e8f7ff78;
     border-radius: 30px;
 }
+@media (max-width:400px){
+    .product-preview{
+        max-width:30px;
+        height:30px;
+    }
+    .table-row{
+        font-size: 12px;
+    }
+}

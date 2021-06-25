@@ -162,11 +162,9 @@ export default function EditProduct() {
 								onChange={(event) => setFile(event.target.files[0])}
 							/>
 						</div>
-						<div className="mb-3 d-flex justify-content-center">
 							<button type="submit" className="btn btn-success w-75">
 								Update
 							</button>
-						</div>
 					</form>
 				</div>
 			</div>

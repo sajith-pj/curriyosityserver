@@ -35,8 +35,6 @@ export default function Products() {
 
 
   const editProduct = (productId) => {
-
-    console.log(productId);
     history.push({ pathname: '/admin/edit-product', id: productId })
   }
 
@@ -99,12 +97,12 @@ export default function Products() {
               {products.map((product, index) => (
                 <tr className="table-row">
                   <th scope="row">{index + 1}</th>
-                  <td><img className="product-preview" src={` data:{{` + product.contentType + `}};base64,` + product.base64} alt=" " /></td>
-                  <td>{product.productName}</td>
-                  <td>{product.category}</td>
-                  <td>{product.description}</td>
-                  <td>{product.price}</td>
-                  <td><button className="btn btn-primary" onClick={() => {
+                  <td className="col" ><img className="product-preview" src={` data:{{` + product.contentType + `}};base64,` + product.base64} alt=" " /></td>
+                  <td className="col" >{product.productName}</td>
+                  <td className="col" >{product.category}</td>
+                  <td className="col" >{product.description}</td>
+                  <td className="col" >{product.price}</td>
+                  <td className="col" ><button className="btn btn-primary" onClick={() => {
                     editProduct(product._id)
                   }}  > Edit </button></td>
                   <td><button className="btn btn-danger" onClick={() => {

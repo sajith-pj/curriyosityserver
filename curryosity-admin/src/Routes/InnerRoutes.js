@@ -17,12 +17,14 @@ export default function InnerRoutes() {
         <>
      
          <Navbar/>
+         <div style={{marginTop:"100px"}}>
           <Route  path="/admin/products"> <Products/></Route>
           <Route path="/admin/Orders"  component={Order} />  
          <Route path="/admin/change-password"  component={ChangePassword} />  
          <Route path="/admin/add-products"  component={AddProducts} />
          <Route path="/admin/edit-product"  component={EditProduct} />
          <Route path="/admin/ordered-products"  component={ViewOrderedProducts} />
+         </div>
         </>
     )
 }
