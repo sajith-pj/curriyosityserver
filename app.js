@@ -28,11 +28,11 @@ app.use('/', usersRouter);
 
 if( process.env.NODE_ENV === 'production')
 {
-  app.use(express.static('Curriosity/build'))
-  app.use(express.static('curryosity-admin/build'))
+  app.use(express.static('Curriosity/build' && 'curryosity-admin/build'))
   app.get('/',(req, res)=>{
     res.sendFile(path.join( __dirname, 'Curriosity','build','index.html' ))
   })
+
   app.get('/admin',(req, res)=>{
     res.sendFile(path.join( __dirname, 'curryosity-admin','build' ,'index.html'))
   })
