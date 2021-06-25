@@ -16,15 +16,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('trust proxy',1)
+app.use(cors({origin:'https://curiyosity.netlify.app',credentials:true}))
 db.connect((err)=>{
   if(err)
   console.log("error"+err);
   else
   console.log("database connected");
 });
-app.use('trust proxy',1)
-
-app.use(cors({origin:'https://curiyosity.netlify.app',credentials:true}))
 
 app.use(session({secret:"curiyosity",cookie:{maxAge:600000}}));
 
