@@ -24,7 +24,7 @@ db.connect((err)=>{
   console.log("database connected");
 });
 
-app.use(session({secret:"curiyosity",cookie:{maxAge:600000}}));
+app.use(session({secret:"curiyosity",cookie:{maxAge:600000,secure:true}}));
 
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
