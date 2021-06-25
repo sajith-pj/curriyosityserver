@@ -12,13 +12,9 @@ const verifyLogin = (req,res,next)=>{
   }
 }
 
-router.get('/user' ,function(req, res) { 
- if(req.session.user){
+router.get('/' ,function(req, res) { 
+
    res.json(req.session.user)
- }else{
-   req.session.loggedIn = false
-   res.json(req.session.loggedIn)
- }
 
 });
 

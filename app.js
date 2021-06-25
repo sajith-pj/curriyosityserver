@@ -23,8 +23,8 @@ db.connect((err)=>{
   console.log("database connected");
 });
 
-app.use(cors({credentials:true , origin:'https://curiyosity.netlify.app'}))
 app.use(session({secret:"curiyosity",cookie:{maxAge:600000}}));
+app.use(cors({credentials:true , origin:'https://curiyosity.netlify.app'}))
 
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
