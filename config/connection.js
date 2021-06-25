@@ -9,7 +9,7 @@ module.exports.connect=function(done){
     //const url='process.env.MONGODB_URI||mongodb://localhost:27017'
     
     mongoClient.connect(url,{useNewUrlParser: true, useUnifiedTopology: true },(err,data)=>{
-        const dbname='restaurent'
+        const dbname='restaurant'
           
         if(err) return done(err)
     
