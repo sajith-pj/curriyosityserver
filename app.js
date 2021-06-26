@@ -25,13 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'lax'}}));
-app.use(function(req, res, next){
-  res.header("Access-Control-Allow-Origin","*")
-  res.header("Origin,X-Requested-With, Content-Type, Accept,Authorization");
-  res.header('Access-Control-Allow-Methods','GET,PUT,PATCH,POST,DELETE,OPTIONS')
-  next()
-})
+app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:"none"}}));
 db.connect((err)=>{
   if(err)
   console.log("error"+err);
@@ -40,12 +34,12 @@ db.connect((err)=>{
 });
 
 
-  // app.use(cors({
-  // allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'],
-  //   credentials: true,
-  //   methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-  //   preflightContinue: false,
-  // origin:'https://restaurantuser.herokuapp.com'}))
+app.use(function(req, res, next){
+  res.header("Access-Control-Allow-Origin","https://restaurantuser.herokuapp.com")
+  res.header("Origin,X-Requested-With, Content-Type, Accept,Authorization");
+  res.header('Access-Control-Allow-Methods','GET,PUT,PATCH,POST,DELETE,OPTIONS')
+  next()
+})
 
 
 app.use('/admin', adminRouter);
