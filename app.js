@@ -17,7 +17,7 @@ app.use(
 		secret: 'curiyosity',
 		resave: false,
 		saveUninitialized: false,
-		cookie: { maxAge: 600000, httpOnly: true, sameSite: 'none', secure: true },
+		cookie: { maxAge: 600000, secure: true },
 	})
 );
 app.use(logger('dev'));
