@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'lax'}}));
+app.use(session({ resave: true,saveUninitialized: true,store: new RedisStore(), secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'lax'}}));
 
 db.connect((err)=>{
   if(err)
