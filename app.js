@@ -42,13 +42,14 @@ app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cook
   // });
 
 
-  app.use(cors({
-  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'],
-    credentials: true,
-    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-  origin:'https://restaurantuser.herokuapp.com'}))
-  
+  // app.use(cors({
+  // allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'],
+  //   credentials: true,
+  //   methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+  //   preflightContinue: false,
+  // origin:'https://restaurantuser.herokuapp.com'}))
+
+  app.use(cors())
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
 
