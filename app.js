@@ -12,6 +12,11 @@ var db = require('./config/connection');
 var session = require('express-session');
 
 app.use(cors({ origin: 'https://restaurantuser.herokuapp.com', credentials: true, exposedHeaders: ['set-cookie'] }));
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(
 	session({
 		secret: 'curiyosity',
@@ -20,11 +25,6 @@ app.use(
 		cookie: { maxAge: 600000, sameSite:'none', secure:true },
 	})
 );
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 db.connect((err) => {
 	if (err) console.log('error' + err);
 	else console.log('database connected');
