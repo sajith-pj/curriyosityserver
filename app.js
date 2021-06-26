@@ -35,7 +35,7 @@ db.connect((err)=>{
 
 
 app.use(function(req, res, next){
-  res.header("Access-Control-Allow-Origin","https://restaurantuser.herokuapp.com")
+  res.header("Access-Control-Allow-Origin",true)
   res.header("Origin,X-Requested-With, Content-Type, Accept,Authorization");
   res.header('Access-Control-Allow-Methods','GET,PUT,PATCH,POST,DELETE,OPTIONS')
   next()
