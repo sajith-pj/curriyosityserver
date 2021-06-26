@@ -30,14 +30,6 @@ db.connect((err) => {
 	else console.log('database connected');
 });
 
-app.use((req, res, next) => {
-  console.log(req.cookies, "cookies")
-	res.cookie('check', '123', {
-    sameSite: "none",
-		secure:true
-	});
-  next()
-});
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
 
@@ -49,7 +41,7 @@ app.use(function (req, res, next) {
 // error handler
 app.use(function (err, req, res, next) {
 	// set locals, only providing error in development
-  console.log(err)
+  console.log(req.url)
 	res.locals.message = err.message;
 	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
