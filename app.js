@@ -8,14 +8,6 @@ var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
 
 var app = express();
-// app.use(function(req, res, next) {
-//   res.header('Access-Control-Allow-Origin', 'https://restaurantuser.herokuapp.com');
-//   res.header('Access-Control-Allow-Credentials', true);
-//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//   next();
-// });
-
-
 var db = require('./config/connection')
 var session = require('express-session')
 
@@ -25,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors({origin:"https://restaurantuser.herokuapp.com", credentials:true}))
-app.use(session({  secret:"curiyosity",cookie:{maxAge:600000 }}));
+app.use(session({  secret:"curiyosity",cookie:{maxAge:600000, sameSite:'none'}}));
 db.connect((err)=>{
   if(err)
   console.log("error"+err);
