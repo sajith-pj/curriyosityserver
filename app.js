@@ -24,7 +24,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 }}));
+app.use(cors({origin:"https://restaurantuser.herokuapp.com", credentials:true}))
+app.use(session({  secret:"curiyosity",cookie:{maxAge:600000 }}));
 db.connect((err)=>{
   if(err)
   console.log("error"+err);
@@ -32,7 +33,6 @@ db.connect((err)=>{
   console.log("database connected");
 });
 
-app.use(cors({origin:"https://restaurantuser.herokuapp.com", credentials:true}))
 
 
 app.use('/admin', adminRouter);
