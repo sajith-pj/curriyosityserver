@@ -8,9 +8,10 @@ var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
 
 var app = express();
+app.use(cors());
 var db = require('./config/connection')
 var session = require('express-session')
-app.use(cors());
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
+app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'lax'}}));
 
 db.connect((err)=>{
   if(err)
@@ -32,7 +34,6 @@ db.connect((err)=>{
   else
   console.log("database connected");
 });
-app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'lax'}}));
 
   // app.use(function(req, res, next) {
   //   res.header('Access-Control-Allow-Origin', 'https://restaurantuser.herokuapp.com');
