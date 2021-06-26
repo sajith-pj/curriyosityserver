@@ -14,7 +14,7 @@ const verifyLogin = (req,res,next)=>{
 
 router.get('/user'  ,function(req, res) { 
   if(req.session.user){
-   res.send(req.session.user)
+   res.json(req.session.user)
   }else{
     req.session.loggedIn = false
     res.send(req.session.loggedIn)
@@ -31,7 +31,6 @@ router.post('/signup', function(req, res, ) {
 router.get('/login', function(req, res) {
     if(req.session.loggedIn){
       res.send(req.session.loggedIn);
-
     }else{
       req.session.loggedIn = false
       res.send(req.session.loggedIn)
@@ -45,7 +44,7 @@ router.post('/login', function(req, res) {
     if(response.status){
       req.session.loggedIn = true
       req.session.user = response.user
-    res.json(req.session.user)
+      res.json(req.session.user)
     }
   })
 });
