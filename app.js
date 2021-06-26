@@ -34,6 +34,7 @@ app.use((req, res, next) => {
 	res.cookie('check', '123', {
 		sameSite: 'lax',
 	});
+  next()
 });
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
