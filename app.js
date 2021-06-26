@@ -20,7 +20,7 @@ cookie:{maxAge:600000,httpOnly:true,sameSite:'none', secure:true}}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser());  
 app.use(express.static(path.join(__dirname, 'public')));
 db.connect((err)=>{
   if(err)
@@ -29,7 +29,11 @@ db.connect((err)=>{
   console.log("database connected");
 })
 
-
+app.use((req,req, res, next)=> {
+  res.cookie("check","123",{ 
+    sameSite: "lax"
+   })
+})
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
 
