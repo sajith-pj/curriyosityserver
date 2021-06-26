@@ -31,7 +31,7 @@ db.connect((err)=>{
   else
   console.log("database connected");
 });
-
+app.use(cors({origin:'http://restaurantuser.herokuapp.com',credentials:true}))
 app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'none'}}));
 
   // app.use(function(req, res, next) {
@@ -49,7 +49,7 @@ app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cook
   //   preflightContinue: false,
   // origin:'https://restaurantuser.herokuapp.com'}))
 
-  app.use(cors({origin:'https://restaurantuser.herokuapp.com',credentials:true}))
+
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
 
