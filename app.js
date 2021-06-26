@@ -22,7 +22,7 @@ app.use(
 		secret: 'curiyosity',
 		resave: false,
 		saveUninitialized: false,
-		cookie: { maxAge: 600000, sameSite:'none', secure:true },
+		cookie: { maxAge: 600000 },
 	})
 );
 db.connect((err) => {
