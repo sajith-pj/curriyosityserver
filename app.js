@@ -20,13 +20,18 @@ var db = require('./config/connection')
 var session = require('express-session')
 
 app.use(logger('dev'));
-app.use(cors({origin:["https://restaurantuser.herokuapp.com"], credentials:true}))
+///app.use(cors({origin:["https://restaurantuser.herokuapp.com"], credentials:true}))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ resave: true,saveUninitialized: true,store: new RedisStore(), secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'lax'}}));
-
+app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'lax'}}));
+app.use(function(req, res, next){
+  res.header("Access-Control-Allow-Origin","*")
+  res.header("Origin,X-Requested-With, Content-Type, Accept,Authorization");
+  res.header('Access-Control-Allow-Methods','GET,PUT,PATCH,POST,DELETE,OPTIONS')
+  next()
+})
 db.connect((err)=>{
   if(err)
   console.log("error"+err);
