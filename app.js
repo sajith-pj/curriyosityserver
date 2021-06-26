@@ -25,15 +25,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
+app.use(cors( {origin:'http://restaurantuser.herokuapp.com',credentials:true}))
 db.connect((err)=>{
   if(err)
   console.log("error"+err);
   else
   console.log("database connected");
 });
-app.use(cors( 
-   {allowedHeaders: 'Access-Control-Allow-Origin , http://restaurantuser.herokuapp.com',credentials:true}))
-app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'none'}}));
+app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'lax'}}));
 
   // app.use(function(req, res, next) {
   //   res.header('Access-Control-Allow-Origin', 'https://restaurantuser.herokuapp.com');
