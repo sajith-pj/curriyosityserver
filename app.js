@@ -11,12 +11,12 @@ var app = express();
 var db = require('./config/connection')
 var session = require('express-session')
 
-app.use(cors({ origin:['https://restaurantuser.herokuapp.com'],crendentials:true}))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors({ origin:['https://restaurantuser.herokuapp.com'],crendentials:true}))
 db.connect((err)=>{
   if(err)
   console.log("error"+err);
@@ -25,7 +25,6 @@ db.connect((err)=>{
 });
 
 app.use(session({secret:"curiyosity",cookie:{maxAge:600000}}));
-
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
 
