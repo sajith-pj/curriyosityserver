@@ -20,7 +20,7 @@ router.get('/user',verifyLogin ,function(req, res) {
   //   res.send(req.session.loggedIn)
   // }
   console.log(req.session);
-  res.json(req.session.user)
+  res.send(req.session.user)
 });
 
 router.post('/signup', function(req, res, ) {
