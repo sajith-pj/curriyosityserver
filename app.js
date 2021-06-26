@@ -16,12 +16,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors({
-  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'],
-    credentials: true,
-    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-  origin:'https://restaurantuser.herokuapp.com'}))
+// app.use(cors({
+//   allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'],
+//     credentials: true,
+//     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+//     preflightContinue: false,
+//   origin:'https://restaurantuser.herokuapp.com'}))
+
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'https://restaurantuser.herokuapp.com');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 db.connect((err)=>{
   if(err)
   console.log("error"+err);
