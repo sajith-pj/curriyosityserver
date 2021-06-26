@@ -31,7 +31,7 @@ db.connect((err) => {
 });
 
 app.use((req, res, next) => {
-  console.log(req.cookies)
+  console.log(req.cookies, "cookies")
 	res.cookie('check', '123', {
     sameSite: "none",
 		secure:true
