@@ -23,12 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //     preflightContinue: false,
 //   origin:'https://restaurantuser.herokuapp.com'}))
 
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://restaurantuser.herokuapp.com');
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
+
 
 db.connect((err)=>{
   if(err)
@@ -39,6 +34,14 @@ db.connect((err)=>{
 
 app.use(session({ resave: true,
   saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'none'}}));
+
+  app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'https://restaurantuser.herokuapp.com');
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
+  
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
 
