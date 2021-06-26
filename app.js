@@ -31,7 +31,8 @@ db.connect((err)=>{
   else
   console.log("database connected");
 });
-app.use(cors({origin:'http://restaurantuser.herokuapp.com',credentials:true}))
+app.use(cors( 
+   {allowedHeaders: 'Access-Control-Allow-Origin',origin:'http://restaurantuser.herokuapp.com',credentials:true}))
 app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'none'}}));
 
   // app.use(function(req, res, next) {
