@@ -19,6 +19,7 @@ router.get('/user'  ,function(req, res) {
   //   req.session.loggedIn = false
   //   res.send(req.session.loggedIn)
   // }
+  console.log(req.session);
   res.json(req.session)
 });
 
