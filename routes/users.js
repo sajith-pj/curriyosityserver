@@ -19,8 +19,10 @@ router.get('/user',verifyLogin ,function(req, res) {
   //   req.session.loggedIn = false
   //   res.send(req.session.loggedIn)
   // }
-  console.log(req?.session);
-  res.send(req?.session?.user)
+  // console.log(req?.session);
+  // res.send(req?.session?.user)
+  console.log(req.session)
+  res.json()
 });
 
 router.post('/signup', function(req, res, ) {
