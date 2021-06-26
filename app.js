@@ -8,18 +8,19 @@ var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
 
 var app = express();
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://restaurantuser.herokuapp.com');
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
+// app.use(function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', 'https://restaurantuser.herokuapp.com');
+//   res.header('Access-Control-Allow-Credentials', true);
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   next();
+// });
 
 
 var db = require('./config/connection')
 var session = require('express-session')
 
 app.use(logger('dev'));
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
