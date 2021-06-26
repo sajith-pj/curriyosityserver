@@ -20,7 +20,6 @@ var db = require('./config/connection')
 var session = require('express-session')
 
 app.use(logger('dev'));
-///app.use(cors({origin:["https://restaurantuser.herokuapp.com"], credentials:true}))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -33,13 +32,7 @@ db.connect((err)=>{
   console.log("database connected");
 });
 
-
-app.use(function(req, res, next){
-  res.header("Access-Control-Allow-Origin",true)
-  res.header("Origin,X-Requested-With, Content-Type, Accept,Authorization");
-  res.header('Access-Control-Allow-Methods','GET,PUT,PATCH,POST,DELETE,OPTIONS')
-  next()
-})
+app.use(cors({origin:"https://restaurantuser.herokuapp.com", credentials:true}))
 
 
 app.use('/admin', adminRouter);
