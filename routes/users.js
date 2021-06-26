@@ -19,7 +19,7 @@ router.get('/user'  ,function(req, res) {
   //   req.session.loggedIn = false
   //   res.send(req.session.loggedIn)
   // }
-  res.send(req.session)
+  res.send(req.session.user)
 });
 
 router.post('/signup', function(req, res, ) {
