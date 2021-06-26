@@ -10,7 +10,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 var db = require('./config/connection')
 var session = require('express-session')
-
+app.use(cors( {credentials:true}))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -33,7 +33,7 @@ db.connect((err)=>{
   console.log("database connected");
 });
 app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'lax'}}));
-app.use(cors( {credentials:true}))
+
   // app.use(function(req, res, next) {
   //   res.header('Access-Control-Allow-Origin', 'https://restaurantuser.herokuapp.com');
   //   res.header('Access-Control-Allow-Credentials', true);
