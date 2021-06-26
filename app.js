@@ -10,7 +10,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 var db = require('./config/connection')
 var session = require('express-session')
-app.use(cors( {credentials:true}))
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
