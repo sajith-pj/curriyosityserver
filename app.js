@@ -21,7 +21,7 @@ app.use(cors({
     credentials: true,
     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
     preflightContinue: false,
-  origin:'https://restaurantuser.herokuapp.com', credentials:true}))
+  origin:'https://restaurantuser.herokuapp.com'}))
 db.connect((err)=>{
   if(err)
   console.log("error"+err);
@@ -30,7 +30,7 @@ db.connect((err)=>{
 });
 
 app.use(session({ resave: true,
-  saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000}}));
+  saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'none'}}));
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
 
