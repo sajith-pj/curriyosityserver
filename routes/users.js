@@ -12,7 +12,7 @@ const verifyLogin = (req,res,next)=>{
   }
 }
 
-router.get('/user'  ,function(req, res) { 
+router.get('/user',verifyLogin ,function(req, res) { 
   // if(req.session.user){
   //  res.json(req.session.user)
   // }else{
@@ -20,7 +20,7 @@ router.get('/user'  ,function(req, res) {
   //   res.send(req.session.loggedIn)
   // }
   console.log(req.session);
-  res.json(req.session)
+  res.json(req.session.user)
 });
 
 router.post('/signup', function(req, res, ) {
