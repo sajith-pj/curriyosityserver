@@ -17,7 +17,7 @@ app.use(
 		secret: 'curiyosity',
 		resave: false,
 		saveUninitialized: false,
-		cookie: { maxAge: 600000, secure: true },
+		cookie: { maxAge: 600000, sameSite:'none', secure:true },
 	})
 );
 app.use(logger('dev'));
@@ -31,8 +31,10 @@ db.connect((err) => {
 });
 
 app.use((req, res, next) => {
+  console.log(req.cookies)
 	res.cookie('check', '123', {
-		sameSite: 'lax',
+    sameSite: "none",
+		secure:true
 	});
   next()
 });
