@@ -21,7 +21,7 @@ app.use(
 	session({
 		secret: 'curiyosity',
 		resave: false,
-		saveUninitialized: false,
+		saveUninitialized: true,
 		cookie: { maxAge: 600000 },
 	})
 );
