@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors({origin:"https://restaurantuser.herokuapp.com", credentials:true}))
+app.use(cors({origin:"https://restaurantuser.herokuapp.com", credentials:true,exposedHeaders:["set-cookie"]}))
 app.use(session({  secret:"curiyosity",cookie:{maxAge:600000, secure:true,sameSite:'none'}}));
 db.connect((err)=>{
   if(err)
