@@ -32,15 +32,22 @@ db.connect((err)=>{
   console.log("database connected");
 });
 
-app.use(session({ resave: true,
-  saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'none'}}));
+app.use(session({ resave: true,saveUninitialized: true, secret:"curiyosity",cookie:{maxAge:600000 ,sameSite:'none'}}));
 
-  app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'https://restaurantuser.herokuapp.com');
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-  });
+  // app.use(function(req, res, next) {
+  //   res.header('Access-Control-Allow-Origin', 'https://restaurantuser.herokuapp.com');
+  //   res.header('Access-Control-Allow-Credentials', true);
+  //   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  //   next();
+  // });
+
+
+  app.use(cors({
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'],
+    credentials: true,
+    methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+  origin:'https://restaurantuser.herokuapp.com'}))
   
 app.use('/admin', adminRouter);
 app.use('/', usersRouter);
