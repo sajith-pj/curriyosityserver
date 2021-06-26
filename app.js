@@ -11,20 +11,23 @@ var app = express();
 var db = require('./config/connection')
 var session = require('express-session')
 
-app.use(session({  secret:"curiyosity",cookie:{maxAge:600000,httpOnly:true,sameSite:'none'}}));
+app.use(cors({origin:"https://restaurantuser.herokuapp.com", credentials:true,exposedHeaders:["set-cookie"]}))
+app.use(session({  
+  secret:"curiyosity",
+  resave: false,
+  saveUninitialized: false,
+cookie:{maxAge:600000,httpOnly:true,sameSite:'none', secure:true}}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors({origin:"https://restaurantuser.herokuapp.com", credentials:true,exposedHeaders:["set-cookie"]}))
 db.connect((err)=>{
   if(err)
   console.log("error"+err);
   else
   console.log("database connected");
-});
-
+})
 
 
 app.use('/admin', adminRouter);
