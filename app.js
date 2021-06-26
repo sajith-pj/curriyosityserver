@@ -11,7 +11,7 @@ var app = express();
 var db = require('./config/connection');
 var session = require('express-session');
 
-app.use(cors({ origin: 'https://restaurantuser.herokuapp.com', credentials: true, exposedHeaders: ['set-cookie'] }));
+app.use(cors({ origin: 'https://restaurantuser.herokuapp.com', credentials: true,/* exposedHeaders: ['set-cookie']*/ }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
