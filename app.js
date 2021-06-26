@@ -11,7 +11,7 @@ var app = express();
 var db = require('./config/connection')
 var session = require('express-session')
 
-app.use(cors({crendentials:true}))
+app.use(cors({ origin:'https://restaurantuser.herokuapp.com',crendentials:true}))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
